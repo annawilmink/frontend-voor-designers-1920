@@ -34,3 +34,10 @@ Voor wat complexere micro-interacties waar verschillende states elkaar moeten op
 
 - eventlistener: [transitionend](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/transitionend_event)
 - eventlistener: [animationend](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/animationend_event)
+
+
+## Feedback 1
+Wanneer je klikt op de foto komen er details van het studentenhuis onderaan de foto. Ik vond zelf dat het niet duidelijk was dat je op de foto kon klikken en dit was ook mijn feedback. Ook is het handig om states te maken voor de foto wanneer je erop heb geklikt en wanneer niet. Eventueel een select all/deselected all state. 
+
+## Aanpassingen
+Ik heb een select all button toegevoegd door een eventlistener aan te maken die al de details laat zien. Ik heb nu ook een tekst wanneer je over de foto's hover die zegt dat je op de foto's kan klikken.

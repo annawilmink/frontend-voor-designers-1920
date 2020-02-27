@@ -1,16 +1,97 @@
-html{
-  box-sizing: border-box; /* https://css-tricks.com/box-sizing/ */
-  background:#eee;
-  background: url("../img/flagF4D.png") center no-repeat;
+html {
+  box-sizing: border-box;
+  /* https://css-tricks.com/box-sizing/ */
+  background: #edebd9;
+  /*  background: url("../img/flagF4D.png") center no-repeat;*/
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
-body{
-  max-width: 30em;
-  margin: 1em auto;
-  padding: 1em;
-  background: #fff;
+
+h1 {
+  padding-left: 70px;
+  font-family: sans-serif;
+  color: 1c1f4c;
+}
+
+p {
+  padding-left: 70px;
+  font-family: sans-serif;
+  color: 1c1f4c;
+}
+
+header p {
+  margin-right: 410px;
+}
+
+main {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+main section img {
+  height: 460px;
+  transition: all 0.3s;
+}
+
+main section img:hover {
+  transform: scale(1.1);
+}
+
+main section .foto {
   border-radius: 1em;
-  box-shadow: 0.5em 0.5em 0.5em rgba(68,68,68,0.6);
+}
+
+/* transition bron: https://codepen.io/joezimjs/pen/zRzjzG */
+main section .info {
+  padding-top: 5px;
+  width: 307px;
+  height: 190px;
+  background-color: #00848c;
+  margin-top: 28px;
+  visibility: hidden;
+  transition: all .5s ease-in-out;
+  transform-origin: left top;
+  transform: scaleY(0);
+}
+
+main section .info p {
+  color: white;
+  padding-left: 30px;
+
+}
+
+main section .show {
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+main section .pijl {
+  visibility: hidden;
+  padding-left: 0;
+  margin: 0px 104px;
+  margin-top: 25px;
+}
+
+main section .pijlshow {
+  visibility: visible;
+
+}
+
+.button {
+  background-color: #00848c;
+  width: 142px;
+  margin-left: 70px;
+  padding: 1px;
+  border-radius: 1em;
+}
+
+.button p {
+  padding-left: 18px;
+  color: white;
 }

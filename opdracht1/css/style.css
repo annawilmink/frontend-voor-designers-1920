@@ -36,7 +36,7 @@ main {
 
 main section img {
   height: 460px;
-  transition: all 0.3s;
+  transition: all 0.5s;
 }
 
 main section img:hover {
@@ -80,7 +80,6 @@ main section .pijl {
 
 main section .pijlshow {
   visibility: visible;
-
 }
 
 .button {
@@ -89,6 +88,9 @@ main section .pijlshow {
   margin-left: 70px;
   padding: 1px;
   border-radius: 1em;
+}
+.button:hover {
+  cursor:pointer;
 }
 
 .button p {

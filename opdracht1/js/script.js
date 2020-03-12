@@ -61,10 +61,25 @@ function toggleDetails4() {
 }
 
 function selectall() {
-  details1.classList.toggle("show");
-  details2.classList.toggle("show");
-  details3.classList.toggle("show");
-  details4.classList.toggle("show");
+  selectbutton.classList.toggle("show");
+  //details1.classList.contains("show");
+  
+  if(selectbutton.classList.contains("show")){
+    console.log("laat maar zien die details")
+
+    details1.classList.add("show");
+    details2.classList.add("show");
+    details3.classList.add("show");
+    details4.classList.add("show");
+    
+  }else{
+    console.log("weghalen !")
+
+    details1.classList.remove("show");
+    details2.classList.remove("show");
+    details3.classList.remove("show");
+    details4.classList.remove("show");
+  }
 }
 
 selectbutton.addEventListener('click', selectall);

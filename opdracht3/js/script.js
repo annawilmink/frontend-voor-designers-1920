@@ -1,5 +1,15 @@
+/*jslint browser: true, devel: true, eqeq: true, plusplus: true, sloppy: true, vars: true, white: true*/
+/*eslint-env browser*/
+/*eslint 'no-console':0*/
+
 var header = document.querySelector('header');
 var section = document.querySelector('section');
+var button = document.querySelector('button');
+var foto1 = document.querySelector('#foto1');
+var foto2 = document.querySelector('#foto2');
+var foto3 = document.querySelector('#foto3');
+var foto4 = document.querySelector('#foto4');
+var titel = document.querySelector('#titel');
 
 //Url van de json
 var requestURL = 'https://koopreynders.github.io/frontendvoordesigners/opdracht3/json/movies.json';
@@ -23,9 +33,39 @@ request.onload = function () {
     console.log (alleFilms);
 }
 
+new Glider(document.querySelector('.glider'), {
+  slidesToShow: 1,
+  dots: '.dots',
+  scrollLock:true,
+  draggable: true,
+  arrows: {
+    prev: '.glider-prev',
+    next: '.glider-next'
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 39) {
+        var buttonRight = document.querySelector('.glider-next');
+        console.log(buttonRight);
+        buttonRight.click();
+    }
+
+});
+  
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 37) {
+        var buttonLeft = document.querySelector('.glider-prev');
+        console.log(buttonLeft);
+        buttonLeft.click();
+      
+    }
+
+});
+
 function titels(movies) {
   var h1 = document.createElement('h1');
-  h1.textContent = movies[3].title;
+  h1.textContent = movies[0].title;
   header.appendChild(h1);
   
   var plot = document.createElement('plot');
@@ -33,49 +73,18 @@ function titels(movies) {
   header.appendChild(plot);
   
   var cover = document.createElement('img');
+  cover.src = movies[0].cover;
+  foto1.appendChild(cover);
+  
+    var cover = document.createElement('img');
+  cover.src = movies[1].cover;
+  foto2.appendChild(cover);
+  
+    var cover = document.createElement('img');
+  cover.src = movies[2].cover;
+  foto3.appendChild(cover);
+  
+    var cover = document.createElement('img');
   cover.src = movies[3].cover;
-  header.appendChild(cover);
+  foto4.appendChild(cover);
 }
-
-//function TitelHeader(jsonObj) {
-//  const myH1 = document.createElement('h1');
-//  myH1.textContent = jsonObj['squadName'];
-//  header.appendChild(myH1);
-//}
-//  const myPara = document.createElement('p');
-//  myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
-//  header.appendChild(myPara);
-
-
-//function showCover(jsonObj) {
-//  const heroes = jsonObj['members'];
-//      
-//  for (let i = 0; i < heroes.length; i++) {
-//    const myArticle = document.createElement('article');
-//    const myH2 = document.createElement('h2');
-//    const myPara1 = document.createElement('p');
-//    const myPara2 = document.createElement('p');
-//    const myPara3 = document.createElement('p');
-//    const myList = document.createElement('ul');
-//
-//    myH2.textContent = heroes[i].name;
-//    myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
-//    myPara2.textContent = 'Age: ' + heroes[i].age;
-//    myPara3.textContent = 'Superpowers:';
-//        
-//    const superPowers = heroes[i].powers;
-//    for (let j = 0; j < superPowers.length; j++) {
-//      const listItem = document.createElement('li');
-//      listItem.textContent = superPowers[j];
-//      myList.appendChild(listItem);
-//    }
-//
-//    myArticle.appendChild(myH2);
-//    myArticle.appendChild(myPara1);
-//    myArticle.appendChild(myPara2);
-//    myArticle.appendChild(myPara3);
-//    myArticle.appendChild(myList);
-//
-//    section.appendChild(myArticle);
-//  }
-//}

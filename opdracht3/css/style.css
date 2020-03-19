@@ -46,3 +46,49 @@ h2 {
   letter-spacing: -5px;
   margin-bottom: 10px;
 }
+
+
+.glider-prev,.glider-next {
+  user-select: none;
+  position: absolute;
+  outline: none;
+  background: none;
+  padding: 0;
+  z-index: 2;
+  font-size: 40px;
+  text-decoration: none;
+  left: 408px;
+  border: 0;
+  top: 170px;
+  cursor: pointer;
+  color: darkgreen;
+  opacity: 1;
+  line-height: 1;
+  transition: opacity .5s cubic-bezier(.17,.67,.83,.67),
+              color .5s cubic-bezier(.17,.67,.83,.67);
+}
+.glider-prev:hover,
+.glider-next:hover,
+.glider-prev:focus,
+.glider-next:focus {
+  color: green;
+}
+
+.glider-next {
+right: 418px;
+  left: auto;
+    top: 170px;
+}
+.glider-next.disabled,
+.glider-prev.disabled {
+  opacity: .25;
+  color: darkgreen;
+  cursor: default;
+}
+.glider-slide {
+  min-width: 150px;
+}
+
+button img {
+  height: 60px;
+}

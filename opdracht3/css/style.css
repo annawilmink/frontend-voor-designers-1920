@@ -1,94 +1,119 @@
-/* || general styles */
-
 html {
-  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  box-sizing: border-box;
+  /* https://css-tricks.com/box-sizing/ */
+  background: black;
+  /*  background: url("../img/flagF4D.png") center no-repeat;*/
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
-  width: 800px;
-  margin: 0 auto;
+  margin: 0;
+  padding:0;
+  font-family: sans-serif;
 }
-
-h1, h2 {
-  font-family: 'Faster One', cursive;
-}
-
-/* header styles */
 
 h1 {
-  font-size: 4rem;
-  text-align: center;
+  padding-left: 70px;
+  color: white;
+}
+
+p {
+  padding-left: 70px;
+  color: white;
 }
 
 header p {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
+  margin-right: 410px;
 }
 
-/* section styles */
-
-section article {
-  width: 33%;
-  float: left;
+header img {
+  height: 62px;
+  margin-left: 70px;
+  margin-top: 10px;
 }
 
-section p {
-  margin: 5px 0;
+header div {
+  background-color: #F6BF26;
+  padding-bottom: 10px;
 }
 
-section ul {
-  margin-top: 0;
+main {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 2em;
 }
 
-h2 {
-  font-size: 2.5rem;
-  letter-spacing: -5px;
-  margin-bottom: 10px;
+main section img {
+  height: 460px;
+  transition: all 0.5s;
+  border-radius: 1em;
 }
 
+main section img:hover {
+  transform: scale(1.1);
+}
 
-.glider-prev,.glider-next {
-  user-select: none;
-  position: absolute;
-  outline: none;
-  background: none;
-  padding: 0;
-  z-index: 2;
-  font-size: 40px;
-  text-decoration: none;
-  left: 408px;
-  border: 0;
-  top: 170px;
+/* transition bron: https://codepen.io/joezimjs/pen/zRzjzG */
+main section .info {
+  padding-top: 5px;
+  padding-right: 15px;
+  width: 307px;
+  height: 610px;
+  background-color: #F6BF26;
+  margin-top: 28px;
+  visibility: hidden;
+  transition: all .5s ease-in-out;
+  transform-origin: left top;
+  transform: scaleY(0);
+}
+
+/*oude html (kan weg later?)*/
+main section .info div{
+  color: white;
+  padding-left: 30px;
+}
+
+/*De json aanpassen*/
+main section .info div h1{
+  color: white;
+  padding-left: 37px;
+}
+
+main section .show {
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+main section .pijl {
+  visibility: hidden;
+  padding-left: 0;
+  margin: 0px 104px;
+  margin-top: 25px;
+}
+
+main section .pijlshow {
+  visibility: visible;
+}
+
+.button {
+  background-color: #F6BF26;
+  width: 142px;
+  margin-left: 70px;
+  padding: 1px;
+  border-radius: 1em;
+}
+
+.button:hover {
   cursor: pointer;
-  color: darkgreen;
-  opacity: 1;
-  line-height: 1;
-  transition: opacity .5s cubic-bezier(.17,.67,.83,.67),
-              color .5s cubic-bezier(.17,.67,.83,.67);
-}
-.glider-prev:hover,
-.glider-next:hover,
-.glider-prev:focus,
-.glider-next:focus {
-  color: green;
 }
 
-.glider-next {
-right: 418px;
-  left: auto;
-    top: 170px;
-}
-.glider-next.disabled,
-.glider-prev.disabled {
-  opacity: .25;
-  color: darkgreen;
-  cursor: default;
-}
-.glider-slide {
-  min-width: 150px;
-}
-
-button img {
-  height: 60px;
+.button p {
+  padding-left: 18px;
+  color: white;
 }

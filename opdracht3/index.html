@@ -1,43 +1,63 @@
-<!DOCTYPE html>
-<html>
+<html lang="nl">
 
 <head>
   <meta charset="utf-8">
-
-  <title>Our superheroes</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frontend voor Designer - Opdracht 1</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/glider.css">
 </head>
 
 <body>
-
   <header>
-
+    <div><img src="img/pathelogo.png"/></div>
+    <h1>Potentiële studentenhuizen</h1>
+    <p>Kijk in de lijst van studentenhuizen, klik om details te bekijken en om te bepalen of de kamer geschikt is om te huren.</p>
   </header>
 
-  <section>
-    <div class="glider-contain">
-      <div class="glider">
-        <div id="foto1"></div>
-        <div id="foto2"></div>
-        <div id="foto3"></div>
-        <div id="foto4"></div>
+  <div class="button">
+    <p class="selectbutton">Selecteer alles</p>
+  </div>
+  
+  <main>
+    <section>
+      <div class='foto' id="foto1"></div>
+      <p class="pijl pijl1">klik op de foto</p>
+      <div class="info dropdownsection1">
+        <div id="titel1"></div>
+        <div id="plot1"></div>
       </div>
-    </div>
+    </section>
+
+    <section>
+      <div class='foto' id="foto2"></div>
+      <p class="pijl pijl2">klik op de foto</p>
+      <div class="dropdownsection2 info">
+                <div id="titel2"></div>
+        <div id="plot2"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class='foto' id="foto3"></div>
+            <p class="pijl pijl3">klik op de foto</p>
+      <div class="dropdownsection3 info">
+                <div id="titel3"></div>
+        <div id="plot3"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class='foto' id="foto4"></div>
+            <p class="pijl pijl4">klik op de foto</p>
+      <div class="dropdownsection4 info">
+                <div id="titel4"></div>
+        <div id="plot4"></div>
+      </div>
+    </section>
+  </main>
 
 
-    <div>
-      <button role="button" aria-label="Previous" class="glider-prev"><img src="img/left.png" alt=""></button>
-      <button role="button" aria-label="Next" class="glider-next"><img src="img/right.png" alt=""></button>
-      <div role="tablist" class="dots"></div>
-    </div>
-
-
-  </section>
+  <script src="js/script.js" type="text/javascript"></script>
 </body>
-<script src="js/glider.js"></script>
-<script src="js/script.js"></script>
 
 </html>

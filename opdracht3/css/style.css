@@ -18,12 +18,12 @@ body {
 }
 
 h1 {
-  padding-left: 70px;
+  padding-left: 95px;
   color: white;
 }
 
 p {
-  padding-left: 70px;
+  padding-left: 95px;
   color: white;
 }
 
@@ -33,7 +33,7 @@ header p {
 
 header img {
   height: 62px;
-  margin-left: 70px;
+  margin-left: 95px;
   margin-top: 10px;
 }
 
@@ -53,6 +53,7 @@ main section img {
   height: 460px;
   transition: all 0.5s;
   border-radius: 1em;
+  max-width:310px;
 }
 
 main section img:hover {
@@ -90,6 +91,15 @@ main section .show {
   transform: scaleY(1);
 }
 
+main section.show {
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+main section.remove {
+  display:none;
+}
+
 main section .pijl {
   visibility: hidden;
   padding-left: 0;
@@ -104,9 +114,10 @@ main section .pijlshow {
 .button {
   background-color: #F6BF26;
   width: 142px;
-  margin-left: 70px;
+  margin-left: 95px;
   padding: 1px;
   border-radius: 1em;
+  display: inline-block;
 }
 
 .button:hover {

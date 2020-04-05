@@ -2,22 +2,37 @@
 /*eslint-env browser*/
 /*eslint 'no-console':0*/
 
-//var header = document.querySelector('header');
-//var section = document.querySelector('section');
+// ----- Declaraties
+
+// Hier declareer ik alle foto's
 var foto1 = document.querySelector('#foto1');
 var foto2 = document.querySelector('#foto2');
 var foto3 = document.querySelector('#foto3');
 var foto4 = document.querySelector('#foto4');
 
+// Hier declareer ik alle titels
 var titel1 = document.querySelector('#titel1');
 var titel2 = document.querySelector('#titel2');
 var titel3 = document.querySelector('#titel3');
 var titel4 = document.querySelector('#titel4');
 
+// Hier declareer ik alle plots
 var plot1 = document.querySelector('#plot1');
 var plot2 = document.querySelector('#plot2');
 var plot3 = document.querySelector('#plot3');
 var plot4 = document.querySelector('#plot4');
+
+var allMovies = document.querySelectorAll(".movie");
+var horror = document.querySelectorAll(".horror");
+console.log(buttonHorror);
+var comedy = document.querySelectorAll(".comedy");
+
+var ButtonAlleFilms = document.querySelector(".alleFilmsbutton");
+var buttonHorror = document.querySelector(".horrorButton");
+console.log(buttonHorror);
+var ButtonComedy = document.querySelector(".comedyButton");
+
+var i;
 
 //Url van de json
 var requestURL = 'https://koopreynders.github.io/frontendvoordesigners/opdracht3/json/movies.json';
@@ -36,14 +51,54 @@ request.send();
 
 //Aangeven wat hij moet doen wanneer hij geladen is.
 request.onload = function () {
+  //hierbij laat ik alle gegevens van json zien in de console log
   console.log(request.response);
   
   showTitles(request.response);
   showCovers(request.response);
   showPlots(request.response);
-//  titels(alleFilms);
-//  plots(alleFilms);
 }
+
+
+// ----- Eventhandlers
+
+//function filterMovies(genre){
+//  for(i = 0; i < allMovies.length; i++ ){
+//    if(!allMovies[i].classList.contains(genre)){
+//      
+//      if(!allMovies[i].classList.contains("shown")){
+//        allMovies[i].classList.add('remove');
+//      }
+//      
+//    }else{
+//      if(allMovies[i].classList.contains("remove")){
+//        allMovies[i].classList.remove("remove")
+//      }
+//      allMovies[i].classList.add('shown');
+//    }
+//  }
+//}
+
+//function herstel() {
+//  for (i = 0; i < horror.length; i++) {
+//    horror[i].classList.remove("remove");
+//  }
+//  for (i = 0; i < comedy.length; i++) {
+//    comedy[i].classList.remove("remove");
+//  }
+//}
+
+function horror() {
+console.log(buttonHorror);
+  for (i = 0; i < horror.length; i++) {
+    if (!horror[i].classList.contains("remove")) {
+      horror[i].classList.add("remove");
+    } else {
+      horror[i].classList.remove("remove");
+    }
+  }
+}
+
 
 function showCovers(movies){
   var cover = document.createElement('img');
@@ -103,21 +158,23 @@ function showPlots(movies) {
 //
 //
 
-//als het element foto1 bestaat dan maakt hij er een eventlistener aan vast, anders niet.
+// ----- Declaraties
 
-//var foto1 = document.querySelector("foto1");
+// Hier declareer ik alle details
 var details1 = document.querySelector(".dropdownsection1");
-//var foto2 = document.querySelector(".foto2");
 var details2 = document.querySelector(".dropdownsection2");
-//var foto3 = document.querySelector(".foto3");
 var details3 = document.querySelector(".dropdownsection3");
-//var foto4 = document.querySelector(".foto4");
 var details4 = document.querySelector(".dropdownsection4");
+
+// Hier declareer ik alle pijlen
 var pijl1 = document.querySelector(".pijl1");
 var pijl2 = document.querySelector(".pijl2");
 var pijl3 = document.querySelector(".pijl3");
 var pijl4 = document.querySelector(".pijl4");
+
 var selectbutton = document.querySelector(".button");
+
+// ----- Eventhandlers
 
 function togglePijl1() {
   pijl1.classList.toggle("pijlshow");
@@ -153,7 +210,6 @@ function toggleDetails4() {
 
 function selectall() {
   selectbutton.classList.toggle("show");
-  //details1.classList.contains("show");
   
   if(selectbutton.classList.contains("show")){
     console.log("laat maar zien die details");
@@ -164,7 +220,7 @@ function selectall() {
     details4.classList.add("show");
     
   }else{
-    console.log("weghalen !");
+    console.log("weghalen!");
 
     details1.classList.remove("show");
     details2.classList.remove("show");
@@ -172,6 +228,8 @@ function selectall() {
     details4.classList.remove("show");
   }
 }
+
+// ----- Eventlisteners
 
 selectbutton.addEventListener('click', selectall);
 
@@ -193,3 +251,14 @@ foto4.addEventListener('mouseover', togglePijl4);
 foto4.addEventListener('mouseout', togglePijl4);
 
 selectbutton.addEventListener('click', selectall);
+
+buttonHorror.addEventListener('click', horror);
+console.log(buttonHorror);
+
+//Filter functie
+//buttonHorror.addEventListener('click', function() {
+//                                filterMovies("horror");
+//                              });
+//comedyButton.addEventListener('click', function() {
+//                                filterMovies("comedy");
+//                              });

@@ -40,6 +40,8 @@ header img {
 header div {
   background-color: #F6BF26;
   padding-bottom: 10px;
+    display: flex;
+  margin-bottom: 10px;
 }
 
 main {
@@ -91,7 +93,7 @@ main section .show {
   transform: scaleY(1);
 }
 
-main section.show {
+main section .show {
   visibility: visible;
   transform: scaleY(1);
 }

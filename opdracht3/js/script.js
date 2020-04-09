@@ -22,17 +22,18 @@ var plot2 = document.querySelector('#plot2');
 var plot3 = document.querySelector('#plot3');
 var plot4 = document.querySelector('#plot4');
 
-var allMovies = document.querySelectorAll(".movie");
-var horror = document.querySelectorAll(".horror");
-console.log(buttonHorror);
-var comedy = document.querySelectorAll(".comedy");
+// Hier declareer ik alle genres per film
+var alleHorror = document.querySelectorAll(".horror");
+var alleComedy = document.querySelectorAll(".comedy");
+var alleDrama = document.querySelectorAll(".drama");
+var alleActie = document.querySelectorAll(".actie");
 
+// Hier declareer ik buttons
 var ButtonAlleFilms = document.querySelector(".alleFilmsbutton");
 var buttonHorror = document.querySelector(".horrorButton");
-console.log(buttonHorror);
 var ButtonComedy = document.querySelector(".comedyButton");
-
-var i;
+var buttonDrama = document.querySelector(".dramaButton");
+var ButtonActie = document.querySelector(".actieButton");
 
 //Url van de json
 var requestURL = 'https://koopreynders.github.io/frontendvoordesigners/opdracht3/json/movies.json';
@@ -62,44 +63,80 @@ request.onload = function () {
 
 // ----- Eventhandlers
 
-//function filterMovies(genre){
-//  for(i = 0; i < allMovies.length; i++ ){
-//    if(!allMovies[i].classList.contains(genre)){
-//      
-//      if(!allMovies[i].classList.contains("shown")){
-//        allMovies[i].classList.add('remove');
-//      }
-//      
-//    }else{
-//      if(allMovies[i].classList.contains("remove")){
-//        allMovies[i].classList.remove("remove")
-//      }
-//      allMovies[i].classList.add('shown');
-//    }
-//  }
-//}
 
-//function herstel() {
-//  for (i = 0; i < horror.length; i++) {
-//    horror[i].classList.remove("remove");
-//  }
-//  for (i = 0; i < comedy.length; i++) {
-//    comedy[i].classList.remove("remove");
-//  }
-//}
+//Hier zorg ik dat je alle films weer kunt zien als je op 'alle films' button klikt
+function herstel() {
+  for (i = 0; i < alleHorror.length; i++) {
+    alleHorror[i].classList.remove("remove");
+  }
+  for (i = 0; i < alleComedy.length; i++) {
+    alleComedy[i].classList.remove("remove");
+  }
+  for (i = 0; i < alleDrama.length; i++) {
+    alleDrama[i].classList.remove("remove");
+  }
+  for (i = 0; i < alleActie.length; i++) {
+    alleActie[i].classList.remove("remove");
+  }
+}
 
+//Hier zorg ik dat je alleen de horror films ziet
 function horror() {
-console.log(buttonHorror);
-  for (i = 0; i < horror.length; i++) {
-    if (!horror[i].classList.contains("remove")) {
-      horror[i].classList.add("remove");
+  for (i = 0; i < alleHorror.length; i++) {
+    if (!alleHorror[i].classList.contains("remove")) {
+      alleComedy[i].classList.add("remove")
+      alleDrama[i].classList.add("remove")
+      alleActie[i].classList.add("remove")
+      ;
     } else {
-      horror[i].classList.remove("remove");
+      alleHorror[i].classList.remove("remove");
     }
   }
 }
 
+//Hier zorg ik dat je alleen de comedy films ziet
+function comedy() {
+  for (i = 0; i < alleComedy.length; i++) {
+    if (!alleComedy[i].classList.contains("remove")) {
+      alleHorror[i].classList.add("remove")
+      alleDrama[i].classList.add("remove")
+      alleActie[i].classList.add("remove")
+      ;
+    } else {
+      alleComedy[i].classList.remove("remove");
+    }
+  }
+}
 
+//Hier zorg ik dat je alleen de drama films ziet
+function drama() {
+  for (i = 0; i < alleDrama.length; i++) {
+    if (!alleDrama[i].classList.contains("remove")) {
+      alleHorror[i].classList.add("remove")
+      alleComedy[i].classList.add("remove")
+      alleActie[i].classList.add("remove")
+      ;
+    } else {
+      alleDrama[i].classList.remove("remove");
+    }
+  }
+}
+
+//Hier zorg ik dat je alleen de actie films ziet
+function actie() {
+  for (i = 0; i < alleActie.length; i++) {
+    if (!alleActie[i].classList.contains("remove")) {
+      alleHorror[i].classList.add("remove")
+      alleComedy[i].classList.add("remove")
+      alleDrama[i].classList.add("remove")
+      ;
+    } else {
+      alleActie[i].classList.remove("remove");
+    }
+  }
+}
+
+//Hier zorg ik dat de foto's worden weergegeven uit json
 function showCovers(movies){
   var cover = document.createElement('img');
   cover.src = movies[0].cover;
@@ -118,6 +155,7 @@ function showCovers(movies){
   foto4.appendChild(cover);
 }
 
+//Hier zorg ik dat de titels worden weergegeven uit json
 function showTitles(movies) {
   var titel = document.createElement('h1');
   titel.textContent = movies[0].title;
@@ -136,6 +174,7 @@ function showTitles(movies) {
   titel4.appendChild(titel);
 }
 
+//Hier zorg ik dat de plots worden weergegeven uit json
 function showPlots(movies) {
   var plot = document.createElement('plot');
   plot.textContent = movies[0].plot;
@@ -172,10 +211,9 @@ var pijl2 = document.querySelector(".pijl2");
 var pijl3 = document.querySelector(".pijl3");
 var pijl4 = document.querySelector(".pijl4");
 
-var selectbutton = document.querySelector(".button");
-
 // ----- Eventhandlers
 
+// hier zorg ik dat je de tekst onderaan de foto ziet staan
 function togglePijl1() {
   pijl1.classList.toggle("pijlshow");
 }
@@ -192,6 +230,7 @@ function togglePijl4() {
   pijl4.classList.toggle("pijlshow");
 }
 
+// hier zorg ik dat de details weergeven worden
 function toggleDetails1() {
   details1.classList.toggle("show");
 }
@@ -208,30 +247,7 @@ function toggleDetails4() {
   details4.classList.toggle("show");
 }
 
-function selectall() {
-  selectbutton.classList.toggle("show");
-  
-  if(selectbutton.classList.contains("show")){
-    console.log("laat maar zien die details");
-
-    details1.classList.add("show");
-    details2.classList.add("show");
-    details3.classList.add("show");
-    details4.classList.add("show");
-    
-  }else{
-    console.log("weghalen!");
-
-    details1.classList.remove("show");
-    details2.classList.remove("show");
-    details3.classList.remove("show");
-    details4.classList.remove("show");
-  }
-}
-
 // ----- Eventlisteners
-
-selectbutton.addEventListener('click', selectall);
 
 foto1.addEventListener('click', toggleDetails1);
 foto2.addEventListener('click', toggleDetails2);
@@ -250,15 +266,9 @@ foto3.addEventListener('mouseout', togglePijl3);
 foto4.addEventListener('mouseover', togglePijl4);
 foto4.addEventListener('mouseout', togglePijl4);
 
-selectbutton.addEventListener('click', selectall);
-
 buttonHorror.addEventListener('click', horror);
-console.log(buttonHorror);
+ButtonComedy.addEventListener('click', comedy);
+buttonDrama.addEventListener('click', drama);
+ButtonActie.addEventListener('click', actie);
 
-//Filter functie
-//buttonHorror.addEventListener('click', function() {
-//                                filterMovies("horror");
-//                              });
-//comedyButton.addEventListener('click', function() {
-//                                filterMovies("comedy");
-//                              });
+ButtonAlleFilms.addEventListener('click', herstel);

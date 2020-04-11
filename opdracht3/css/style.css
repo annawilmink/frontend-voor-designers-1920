@@ -1,8 +1,6 @@
 html {
   box-sizing: border-box;
   /* https://css-tricks.com/box-sizing/ */
-  background: black;
-  /*  background: url("../img/flagF4D.png") center no-repeat;*/
 }
 
 *,
@@ -11,24 +9,26 @@ html {
   box-sizing: inherit;
 }
 
+/* ------ BODY ------ */
+
 body {
   margin: 0;
-  padding:0;
+  padding: 0;
   font-family: sans-serif;
+  overflow-x: hidden;
+  background: black;
 }
 
-h1 {
+/*bron: https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp*/
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------ HEADER ------ */
+
+header h1 {
   padding-left: 95px;
   color: white;
-}
-
-p {
-  padding-left: 95px;
-  color: white;
-}
-
-header p {
-  margin-right: 410px;
 }
 
 header img {
@@ -37,96 +37,136 @@ header img {
   margin-top: 10px;
 }
 
-header div {
+header {
   background-color: #F6BF26;
-  padding-bottom: 10px;
-    display: flex;
   margin-bottom: 10px;
+  display: flex;
 }
+
+header div {
+  background-color: white;
+  border-radius: 1em;
+  height: 52px;
+  width: 187px;
+  margin-left: 690px;
+  margin-top: 11px;
+}
+
+header div p {
+  color: black;
+  margin-left: 12px;
+}
+
+/* ------ MAIN ------ */
 
 main {
   width: 90%;
   display: flex;
   margin: 0 auto;
   margin-top: 2em;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+/*bron: https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp*/
+main::-webkit-scrollbar {
+  display: none;
 }
 
 main section img {
   height: 460px;
   transition: all 0.5s;
   border-radius: 1em;
-  max-width:310px;
+  max-width: 310px;
 }
 
 main section img:hover {
   transform: scale(1.1);
 }
 
-/* transition bron: https://codepen.io/joezimjs/pen/zRzjzG */
-main section .info {
-  padding-top: 5px;
-  padding-right: 15px;
-  width: 307px;
-  height: 610px;
-  background-color: #F6BF26;
-  margin-top: 28px;
-  visibility: hidden;
-  transition: all .5s ease-in-out;
-  transform-origin: left top;
-  transform: scaleY(0);
-}
-
-/*oude html (kan weg later?)*/
-main section .info div{
+main section h1 {
   color: white;
-  padding-left: 30px;
-}
-
-/*De json aanpassen*/
-main section .info div h1{
-  color: white;
-  padding-left: 37px;
+  font-size: 15px;
 }
 
 main section .show {
   visibility: visible;
   transform: scaleY(1);
+  overflow: hidden;
 }
 
-main section .show {
-  visibility: visible;
-  transform: scaleY(1);
-}
-
-main section.remove {
-  display:none;
-}
-
-main section .pijl {
-  visibility: hidden;
-  padding-left: 0;
-  margin: 0px 104px;
-  margin-top: 25px;
-}
-
-main section .pijlshow {
-  visibility: visible;
+main section .remove {
+  display: none;
 }
 
 .button {
   background-color: #F6BF26;
-  width: 142px;
-  margin-left: 95px;
+  width: 92px;
   padding: 1px;
   border-radius: 1em;
   display: inline-block;
+  transition: all 0.5s;
+  border-radius: 1em;
 }
 
 .button:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 .button p {
   padding-left: 18px;
   color: white;
+  /*met pointer events zorg je ervoor dat je niet meer kan klikken op p 
+  bron: https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events*/
+  pointer-events: none;
+}
+
+main section div {
+  visibility: hidden;
+  color: white;
+}
+
+.show {
+  visibility: visible;
+  overflow: hidden;
+}
+
+.remove {
+  display: none;
+}
+
+/* LOADING STATE */
+.loading {
+  background-color: #F6BF26;
+  height: 100%;
+  width: 100%;
+}
+
+.loading h1 {
+  text-align: center;
+  padding-top: 140px;
+}
+
+.loading img {
+  display: block;
+  margin: auto;
+}
+
+/* LIGHTMODE */
+
+.lightmode {
+  background-color: white;
+}
+
+.lightmode p {
+  color: black;
+}
+
+.lightmode div {
+  color: black;
+}
+
+.lightmode main h1 {
+  color: black;
 }

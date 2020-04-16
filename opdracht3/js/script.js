@@ -93,7 +93,7 @@ function hideOrShowImages(target) {
   //Een aantal elementen hebben de class movie. Hiermee selecteer je alle movies en geef je het een eigen naam.
   Array.from(document.getElementsByClassName("movie")).forEach((films) => {
     //    console.log(target.classList[1], Array.from(element.classList));
-    // als het lijstje movies .. bevat;
+    // als het lijstje movies en niet het gekozen genre bevat toggle je de classe remove;
     if (!Array.from(films.classList).includes(target.classList[1])) {
       console.log(Array.from(films.classList));
       //toggle dan die bepaalde movies

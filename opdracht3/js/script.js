@@ -2,12 +2,11 @@
 /*eslint-env browser*/
 /*eslint 'no-console':0*/
 
-// ----- Declaraties
+// ----- DECLARATIES
 var main = document.querySelector('main');
-var darkmode = document.querySelector('.darkmode');
 var lightmode = document.querySelector('.lightmode');
-// JSON FILE 
 
+// ----- JSON FILE
 //Url van de json
 var requestURL = 'https://koopreynders.github.io/frontendvoordesigners/opdracht3/json/movies.json';
 
@@ -23,30 +22,31 @@ request.responseType = 'json';
 //verzoek versturen
 request.send();
 
-// een functie voor het begin laden van de pagina
+//Een aantal elementen hebben de class remove. Hiermee worden al deze elementen geselecteerd en wordt de class remove verwijderd zodat je de pagina weer kunt zien
 function doneloading() {
-  Array.from(document.getElementsByClassName("remove")).forEach((element) => {
-    //    console.log(target.classList[1], Array.from(element.classList));
-    element.classList.remove("remove");
+  Array.from(document.getElementsByClassName("remove")).forEach((elementenVerwijderen) => {
+    elementenVerwijderen.classList.remove("remove");
   });
 }
 
 //Aangeven wat hij moet doen wanneer hij geladen is.
 request.onload = function () {
-  // hierbij laat ik alle gegevens van json zien in de console log
-//  ????
   // LOADING STATE -- Een functie aan maken voor de loading state
   // bron: https://www.w3schools.com/jsref/met_win_settimeout.asp
   setTimeout(function () {
+    // voer deze functie uit
     doneloading();
+    // aangeven welke class hij moet laden zien tijdens het laden
     document.querySelector(".loading").classList.add("remove");
+    // aangeven wat hij daarna moet laten zien
     showMovies(request.response);
+    // aangeven hoelang hij moet laden
   }, 2000);
-  //  showTitles(request.response);
-  //  showCovers(request.response);
-  //  showPlots(request.response);
+  //Zo noem ik het json bestand
+  var alleFilms = request.response;
+  //in console alle films laten tonen
+  console.log(alleFilms);
 }
-
 
 // HTML ELEMENTEN VULLEN
 function showMovies(moviesjson) {
@@ -79,61 +79,69 @@ function showMovies(moviesjson) {
   }
 
   // Bron code: Nino Schelcher
-  // Voor iedere img wordt een eventlistener en een functie gemaakt. Deze functie roept steeds het element op dat direct na de afbeelding komt, waardoor de bijbehorende div van een film wordt opgeroepen.
+  //Een aantal elementen zijn images. Hiermee worden al deze images geselecteerd en eventlistener aan toegevoegd met een functie. Deze functie roept steeds het element op dat direct na de afbeelding komt, waardoor de bijbehorende div van een film wordt opgeroepen.
   Array.from(document.getElementsByTagName("img")).forEach(img => img.addEventListener("click", function () {
     img.nextElementSibling.classList.toggle('show');
     img.classList.toggle('show');
   }));
-
 }
 
-// ----- Eventhandlers
-
+// FILTER FUNCTIE (hulp mee gehad)
 function hideOrShowImages(target) {
   //  console.log(target.classList);
-  //  console.log(Array.from(document.getElementsByClassName("movie")));
-  Array.from(document.getElementsByClassName("movie")).forEach((element) => {
+  //  console.log(Array.from(document.getElementsByClassName("films")));
+  //Een aantal elementen hebben de class movie. Hiermee selecteer je alle movies en geef je het een eigen naam.
+  Array.from(document.getElementsByClassName("movie")).forEach((films) => {
     //    console.log(target.classList[1], Array.from(element.classList));
-    if (!Array.from(element.classList).includes(target.classList[1])) {
-      console.log(Array.from(element.classList));
-      element.classList.toggle('remove');
-    } else if (element.classList.includes("remove")) {
-      element.classList.toggle('remove');
+    // als het lijstje movies .. bevat;
+    if (!Array.from(films.classList).includes(target.classList[1])) {
+      console.log(Array.from(films.classList));
+      //toggle dan die bepaalde movies
+      films.classList.toggle('remove');
+      // als het lijstje movies de class remove bevat;
+    } else if (films.classList.includes("remove")) {
+      //toggle dan die bepaalde movies
+      films.classList.toggle('remove');
     }
   });
-
 }
 
-
-Array.from(document.getElementsByClassName("button")).forEach(genres => genres.addEventListener("click", function (event) {
+//Een aantal elementen hebben de class button. Hiermee worden al deze elementen geselecteerd en een eventlistener aan toegevoegd met de functie hideorshowimages.
+Array.from(document.getElementsByClassName("button")).forEach(genres => genres.addEventListener("click", function () {
   hideOrShowImages(event.target)
 }));
 
 // DARK EN LIGHT MODE FUNCTIE
 // idee van Sanne. Alleen klein beetje aangepast.
 
-// var aanmaken selecteren img en p in header
+// var aanmaken selecteren p in header, om later tekst te veranderen
 var defaultText = document.querySelector('header div p');
 
 // vullen van de content - automatisch darkmode, dus dit is default
 defaultText.innerHTML = 'Darkmode - Druk op L';
 
-// aanroepen wat hij moet gaan doen als keypress d plaatst vindt
+// aanroepen wat hij moet gaan doen als keypress d & L plaats vindt
 window.addEventListener("keydown", event => {
 
   if (event.key == "d") {
+    //Wanneer key event gelijk is aan D ; wordt het volgende gedaan;
+    //Tekst in console log
     console.log('darkmode is aan');
+    //Verwijderd class lightmode aan body
     document.querySelector('body').classList.remove('lightmode');
-    //als je op darkmode wilt maar de class voor lightmode staat nog aan wordt het verwijdert door deze functie, doordat de website al in darkmode is gestijlt komt er geen class bij
+    //Voegt class darkmode toe aan body
+    document.querySelector('body').classList.add('darkmode');
+    //Tekst veranderen in de button
     defaultText.innerHTML = 'Darkmode - Druk op L';
-  }
-  
-  else if (event.key == "l"){
+  } else if (event.key == "l") {
+    //Wanneer key event gelijk is aan L ; wordt het volgende gedaan;
+    //Tekst in console log
     console.log('lightmode is aan');
-    // Tekst veranderen
+    //Verwijderd class darkmode aan body
+    document.querySelector('body').classList.remove('darkmode');
+    //Voegt class lightmode toe aan body
     document.querySelector('body').classList.add('lightmode');
-    // Tekst veranderen
+    //Tekst veranderen in de button
     defaultText.innerHTML = 'Lightmode - Druk op D';
   }
 });
-
